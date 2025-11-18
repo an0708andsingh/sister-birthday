@@ -3,365 +3,391 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nancy's Birthday Celebration ✨</title>
+    <title>🎂 Nancy's Epic Birthday!</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <span class="sun">☀️</span>
-        <span class="moon">🌙</span>
-    </button>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
 
-    <!-- Floating Particles -->
-    <div class="particles" id="particles"></div>
+    <!-- Music Control -->
+    <div class="music-control" onclick="toggleMusic()">
+        <div class="music-icon">🎵</div>
+        <div class="music-text">Music</div>
+    </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">Nancy's Day 🎂</div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#message">Message</a></li>
-                <li><a href="#journey">Journey</a></li>
-                <li><a href="#wishes">Wishes</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">November 20th</div>
-            <h1 class="hero-title">
-                <span class="title-line">Happy Birthday</span>
-                <span class="title-name">Nancy</span>
-            </h1>
-            <p class="hero-subtitle">Celebrating the amazing person you are ✨</p>
-            <div class="hero-cta">
-                <a href="#message" class="btn btn-primary">Read Message</a>
-                <button class="btn btn-secondary" onclick="openCelebration()">
-                    <span>🎉 Celebrate</span>
+    <!-- Screen 1: Welcome -->
+    <section class="screen" id="screen1">
+        <div class="stars-bg"></div>
+        <div class="content-center">
+            <div class="welcome-box fade-in">
+                <div class="sparkle">✨</div>
+                <h1 class="glitch" data-text="BIRTHDAY GIRL">BIRTHDAY GIRL</h1>
+                <div class="name-reveal">
+                    <span class="letter">N</span>
+                    <span class="letter">A</span>
+                    <span class="letter">N</span>
+                    <span class="letter">C</span>
+                    <span class="letter">Y</span>
+                </div>
+                <div class="date-badge">
+                    <span class="date-icon">📅</span>
+                    <span class="date-text">November 20</span>
+                </div>
+                <button class="start-btn" onclick="nextScreen(2)">
+                    <span>START THE CELEBRATION</span>
+                    <span class="btn-arrow">→</span>
                 </button>
-            </div>
-        </div>
-        <div class="hero-illustration">
-            <div class="floating-element element-1">🎈</div>
-            <div class="floating-element element-2">🎁</div>
-            <div class="floating-element element-3">✨</div>
-            <div class="floating-element element-4">🎊</div>
-            <div class="floating-element element-5">💝</div>
-            <div class="cake-illustration">
-                <div class="cake-3d">
-                    <div class="cake-top"></div>
-                    <div class="cake-middle"></div>
-                    <div class="cake-bottom"></div>
-                    <div class="cake-candle">
-                        <div class="candle-stick"></div>
-                        <div class="candle-flame"></div>
-                    </div>
+                <div class="scroll-hint">
+                    <span>Tap to begin</span>
+                    <div class="bounce-arrow">👇</div>
                 </div>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll Down</span>
-            <div class="mouse"></div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">🏫</div>
-                    <div class="stat-number">Years+</div>
-                    <div class="stat-label">of Friendship</div>
+    <!-- Screen 2: Introduction -->
+    <section class="screen" id="screen2">
+        <div class="split-screen">
+            <div class="split-left">
+                <div class="number-big">01</div>
+                <h2 class="screen-title">
+                    From <span class="highlight">School Friends</span><br>
+                    to <span class="highlight">Forever Siblings</span>
+                </h2>
+                <p class="screen-desc">
+                    This is your story, Nancy. A journey of friendship, 
+                    chocolate exchanges, and a bond that grew into family. 🍫💕
+                </p>
+                <button class="next-btn" onclick="nextScreen(3)">
+                    Continue <span>→</span>
+                </button>
+            </div>
+            <div class="split-right">
+                <div class="emoji-grid">
+                    <div class="emoji-item">🏫</div>
+                    <div class="emoji-item">🍫</div>
+                    <div class="emoji-item">👫</div>
+                    <div class="emoji-item">💕</div>
+                    <div class="emoji-item">👨‍👧</div>
+                    <div class="emoji-item">✨</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon">🍫</div>
-                    <div class="stat-number">Countless</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screen 3: Stats Counter -->
+    <section class="screen" id="screen3">
+        <div class="content-center">
+            <div class="number-big">02</div>
+            <h2 class="screen-title">Our Journey in Numbers</h2>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-emoji">⏰</div>
+                    <div class="stat-number" data-target="365">0</div>
+                    <div class="stat-label">Days of Friendship</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-emoji">🍫</div>
+                    <div class="stat-number" data-target="100">0</div>
                     <div class="stat-label">Chocolates Shared</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon">💕</div>
-                    <div class="stat-number">Forever</div>
-                    <div class="stat-label">Sibling Bond</div>
+                <div class="stat-box">
+                    <div class="stat-emoji">😊</div>
+                    <div class="stat-number" data-target="999">0</div>
+                    <div class="stat-label">Happy Moments</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon">😊</div>
-                    <div class="stat-number">Infinite</div>
-                    <div class="stat-label">Memories Created</div>
+                <div class="stat-box">
+                    <div class="stat-emoji">💝</div>
+                    <div class="stat-number" data-target="1">0</div>
+                    <div class="stat-label">Sister Forever</div>
                 </div>
             </div>
+            <button class="next-btn" onclick="nextScreen(4)">
+                Next <span>→</span>
+            </button>
         </div>
     </section>
 
-    <!-- Message Section -->
-    <section id="message" class="message-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">From the Heart</span>
-                <h2 class="section-title">A Special Message</h2>
-            </div>
-            <div class="message-container">
-                <div class="message-card glass-effect">
-                    <div class="quote-icon">"</div>
-                    <h3 class="message-title">From Chocolates to Forever Bonds 🍫💕</h3>
-                    <div class="message-body">
+    <!-- Screen 4: Message Card -->
+    <section class="screen" id="screen4">
+        <div class="content-center">
+            <div class="number-big">03</div>
+            <h2 class="screen-title">A Message For You</h2>
+            <div class="message-card-modern">
+                <div class="card-header">
+                    <div class="avatar">SA</div>
+                    <div class="card-info">
+                        <div class="card-name">Singh Anand</div>
+                        <div class="card-relation">Brother & Friend</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="typing-text" id="typingText"></p>
+                    <div class="message-full" id="fullMessage" style="display:none;">
                         <p>Dear Nancy,</p>
                         <p>
-                            Who would have thought that two friends exchanging chocolates in school 
-                            would one day become inseparable siblings? Our journey has been nothing 
-                            short of magical.
+                            Remember our school days? The chocolate exchanges that became 
+                            our thing? 🍫 Who knew those sweet moments would lead to something 
+                            even sweeter - a sibling bond!
                         </p>
                         <p>
-                            You've been my partner in crime, my confidant, and now, the sister I 
-                            chose. Your infectious laughter can light up the darkest days, and your 
-                            caring heart makes everyone around you feel special.
+                            You're not just my friend, you're the sister I chose. Your smile 
+                            brightens my days, your laughter is contagious, and your kindness 
+                            knows no bounds.
                         </p>
                         <p>
-                            On this special day, I want you to know how incredibly grateful I am 
-                            to have you in my life. You're not just a friend or a sister – you're 
-                            a blessing.
+                            On this special day, I wish you all the happiness in the world, 
+                            dreams that come true, and adventures that take your breath away! 🌟
                         </p>
-                        <div class="message-wishes">
-                            <h4>This year, I wish for you:</h4>
-                            <ul>
-                                <li>✨ Dreams that soar higher than ever</li>
-                                <li>🌟 Success in every endeavor</li>
-                                <li>💖 Love that multiplies endlessly</li>
-                                <li>😊 Happiness that never fades</li>
-                                <li>🚀 Adventures that thrill your soul</li>
-                            </ul>
-                        </div>
-                        <p>
-                            Here's to more chocolate exchanges, late-night conversations, silly jokes, 
-                            and a lifetime of beautiful moments together!
+                        <p class="message-sign">
+                            Always here for you,<br>
+                            <strong>Singh Anand</strong> ❤️
                         </p>
-                    </div>
-                    <div class="message-signature">
-                        <p>With all my love,</p>
-                        <p class="signature-name">Singh Anand</p>
-                        <p class="signature-role">Your Brother & Forever Friend 👊❤️</p>
                     </div>
                 </div>
+                <div class="card-actions">
+                    <button class="action-btn" onclick="showFullMessage()">
+                        <span>Read Full Message</span>
+                    </button>
+                </div>
             </div>
+            <button class="next-btn" onclick="nextScreen(5)">
+                Next <span>→</span>
+            </button>
         </div>
     </section>
 
-    <!-- Journey Timeline -->
-    <section id="journey" class="journey-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Our Story</span>
-                <h2 class="section-title">The Journey We've Shared</h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-marker">
-                        <div class="timeline-icon">🏫</div>
-                    </div>
-                    <div class="timeline-content glass-effect">
-                        <div class="timeline-date">The Beginning</div>
+    <!-- Screen 5: Timeline -->
+    <section class="screen" id="screen5">
+        <div class="content-center">
+            <div class="number-big">04</div>
+            <h2 class="screen-title">Our Story Timeline</h2>
+            <div class="timeline-modern">
+                <div class="timeline-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-icon">🏫</div>
                         <h3>School Days</h3>
-                        <p>Where our friendship took its first steps. Two kids with a love for chocolates!</p>
-                        <div class="timeline-tag">First Meeting</div>
+                        <p>Where our friendship began. Two strangers became best friends!</p>
                     </div>
                 </div>
-
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-marker">
-                        <div class="timeline-icon">🍫</div>
-                    </div>
-                    <div class="timeline-content glass-effect">
-                        <div class="timeline-date">Sweet Moments</div>
-                        <h3>The Chocolate Exchange Era</h3>
-                        <p>Every chocolate we shared was a seed of the beautiful bond we have today.</p>
-                        <div class="timeline-tag">Building Trust</div>
+                <div class="timeline-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-icon">🍫</div>
+                        <h3>Chocolate Buddies</h3>
+                        <p>The legendary chocolate exchanges that became our tradition!</p>
                     </div>
                 </div>
-
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-marker">
-                        <div class="timeline-icon">🤝</div>
-                    </div>
-                    <div class="timeline-content glass-effect">
-                        <div class="timeline-date">Growing Together</div>
-                        <h3>Best Friends Forever</h3>
-                        <p>From classmates to best friends - sharing secrets, dreams, and everything in between.</p>
-                        <div class="timeline-tag">Unbreakable Bond</div>
+                <div class="timeline-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-icon">🤝</div>
+                        <h3>Best Friends</h3>
+                        <p>Secrets shared, dreams discussed, and memories created!</p>
                     </div>
                 </div>
-
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-marker">
-                        <div class="timeline-icon">👨‍👧</div>
-                    </div>
-                    <div class="timeline-content glass-effect">
-                        <div class="timeline-date">Present Day</div>
+                <div class="timeline-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-icon">👨‍👧</div>
                         <h3>Brother & Sister</h3>
-                        <p>Friends by chance, siblings by choice. A bond that will last forever!</p>
-                        <div class="timeline-tag">Forever Family</div>
+                        <p>From friends to family - a bond that will last forever!</p>
+                    </div>
+                </div>
+            </div>
+            <button class="next-btn" onclick="nextScreen(6)">
+                Next <span>→</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Screen 6: Interactive Wishes -->
+    <section class="screen" id="screen6">
+        <div class="content-center">
+            <div class="number-big">05</div>
+            <h2 class="screen-title">Click to Reveal Wishes</h2>
+            <div class="wishes-cards">
+                <div class="wish-card" onclick="revealWish(this)">
+                    <div class="wish-front">
+                        <div class="wish-icon">🎁</div>
+                        <p>Tap Me!</p>
+                    </div>
+                    <div class="wish-back">
+                        <h4>Success</h4>
+                        <p>May you achieve everything you dream of! 🎯</p>
+                    </div>
+                </div>
+                <div class="wish-card" onclick="revealWish(this)">
+                    <div class="wish-front">
+                        <div class="wish-icon">🎁</div>
+                        <p>Tap Me!</p>
+                    </div>
+                    <div class="wish-back">
+                        <h4>Happiness</h4>
+                        <p>Endless joy and laughter every day! 😊</p>
+                    </div>
+                </div>
+                <div class="wish-card" onclick="revealWish(this)">
+                    <div class="wish-front">
+                        <div class="wish-icon">🎁</div>
+                        <p>Tap Me!</p>
+                    </div>
+                    <div class="wish-back">
+                        <h4>Love</h4>
+                        <p>Surrounded by people who care! 💕</p>
+                    </div>
+                </div>
+                <div class="wish-card" onclick="revealWish(this)">
+                    <div class="wish-front">
+                        <div class="wish-icon">🎁</div>
+                        <p>Tap Me!</p>
+                    </div>
+                    <div class="wish-back">
+                        <h4>Adventure</h4>
+                        <p>Exciting journeys await you! 🚀</p>
+                    </div>
+                </div>
+                <div class="wish-card" onclick="revealWish(this)">
+                    <div class="wish-front">
+                        <div class="wish-icon">🎁</div>
+                        <p>Tap Me!</p>
+                    </div>
+                    <div class="wish-back">
+                        <h4>Health</h4>
+                        <p>Perfect wellness always! 🌺</p>
+                    </div>
+                </div>
+                <div class="wish-card" onclick="revealWish(this)">
+                    <div class="wish-front">
+                        <div class="wish-icon">🎁</div>
+                        <p>Tap Me!</p>
+                    </div>
+                    <div class="wish-back">
+                        <h4>Magic</h4>
+                        <p>A year full of wonderful surprises! ✨</p>
+                    </div>
+                </div>
+            </div>
+            <button class="next-btn" onclick="nextScreen(7)">
+                Next <span>→</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Screen 7: Photo Gallery -->
+    <section class="screen" id="screen7">
+        <div class="content-center">
+            <div class="number-big">06</div>
+            <h2 class="screen-title">Memory Gallery</h2>
+            <div class="photo-grid">
+                <div class="photo-card">
+                    <div class="photo-placeholder">
+                        <span class="photo-emoji">🎓</span>
+                        <p>School Days</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-placeholder">
+                        <span class="photo-emoji">🍫</span>
+                        <p>Chocolate Times</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-placeholder">
+                        <span class="photo-emoji">🎉</span>
+                        <p>Fun Moments</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-placeholder">
+                        <span class="photo-emoji">💝</span>
+                        <p>Sibling Love</p>
+                    </div>
+                </div>
+            </div>
+            <p class="photo-hint">💡 Replace with real photos for personalization!</p>
+            <button class="next-btn" onclick="nextScreen(8)">
+                Next <span>→</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Screen 8: Cake Celebration -->
+    <section class="screen" id="screen8">
+        <div class="content-center">
+            <div class="number-big">07</div>
+            <h2 class="screen-title">Make a Wish! 🎂</h2>
+            <div class="cake-container-new">
+                <div class="cake-modern" id="cakeModern">
+                    <div class="cake-candles">
+                        <div class="candle-flame" id="flame1"></div>
+                        <div class="candle-flame" id="flame2"></div>
+                        <div class="candle-flame" id="flame3"></div>
+                    </div>
+                    <div class="cake-tier tier-1">
+                        <div class="cake-decoration">🌸 🌸 🌸</div>
+                    </div>
+                    <div class="cake-tier tier-2">
+                        <div class="cake-decoration">💝 💝 💝</div>
+                    </div>
+                    <div class="cake-tier tier-3">
+                        <div class="cake-decoration">✨ ✨ ✨ ✨</div>
+                    </div>
+                </div>
+                <p class="cake-instruction">Click the cake to blow the candles!</p>
+            </div>
+            <button class="next-btn" onclick="nextScreen(9)">
+                Next <span>→</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Screen 9: Final Celebration -->
+    <section class="screen" id="screen9">
+        <div class="content-center">
+            <div class="fireworks" id="fireworks"></div>
+            <div class="final-card">
+                <div class="final-emoji">🎊</div>
+                <h1 class="final-title">Happy Birthday Nancy!</h1>
+                <p class="final-message">
+                    Hope this made you smile! 😊<br>
+                    You deserve all the happiness in the world!
+                </p>
+                <div class="final-from">
+                    <p>With love,</p>
+                    <h3>Singh Anand</h3>
+                    <p class="final-tag">Your Brother & Forever Friend 💕</p>
+                </div>
+                <div class="final-actions">
+                    <button class="celebrate-btn" onclick="launchCelebration()">
+                        🎉 CELEBRATE!
+                    </button>
+                    <button class="restart-btn" onclick="restartExperience()">
+                        ↺ Start Over
+                    </button>
+                </div>
+                <div class="share-section">
+                    <p>Share this celebration:</p>
+                    <div class="share-btns">
+                        <button class="share-btn whatsapp" onclick="shareOn('whatsapp')">
+                            <span>WhatsApp</span>
+                        </button>
+                        <button class="share-btn facebook" onclick="shareOn('facebook')">
+                            <span>Facebook</span>
+                        </button>
+                        <button class="share-btn twitter" onclick="shareOn('twitter')">
+                            <span>Twitter</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Memories Gallery -->
-    <section class="gallery-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Moments</span>
-                <h2 class="section-title">Memory Collection</h2>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-card" data-aos="zoom-in">
-                    <div class="gallery-image">
-                        <div class="gallery-placeholder">
-                            <span class="gallery-emoji">🎓</span>
-                            <p>School Adventures</p>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>School Days</h4>
-                        <p>Where it all began</p>
-                    </div>
-                </div>
-                <div class="gallery-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="gallery-image">
-                        <div class="gallery-placeholder">
-                            <span class="gallery-emoji">🍫</span>
-                            <p>Sweet Memories</p>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>Chocolate Times</h4>
-                        <p>The sweetest moments</p>
-                    </div>
-                </div>
-                <div class="gallery-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="gallery-image">
-                        <div class="gallery-placeholder">
-                            <span class="gallery-emoji">😄</span>
-                            <p>Fun Times</p>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>Laughter & Joy</h4>
-                        <p>Countless happy moments</p>
-                    </div>
-                </div>
-                <div class="gallery-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="gallery-image">
-                        <div class="gallery-placeholder">
-                            <span class="gallery-emoji">💝</span>
-                            <p>Sibling Love</p>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>Forever Bond</h4>
-                        <p>Brother & Sister always</p>
-                    </div>
-                </div>
-            </div>
-            <p class="gallery-hint">💡 You can replace these placeholders with real photos!</p>
-        </div>
-    </section>
-
-    <!-- Wishes Section -->
-    <section id="wishes" class="wishes-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">For You</span>
-                <h2 class="section-title">Birthday Wishes</h2>
-            </div>
-            <div class="wishes-grid">
-                <div class="wish-item" data-aos="fade-up">
-                    <div class="wish-emoji">🎯</div>
-                    <h4>Dreams Come True</h4>
-                    <p>May every dream you chase become your reality</p>
-                </div>
-                <div class="wish-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="wish-emoji">💪</div>
-                    <h4>Strength & Courage</h4>
-                    <p>The power to overcome any challenge</p>
-                </div>
-                <div class="wish-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="wish-emoji">🌟</div>
-                    <h4>Success & Glory</h4>
-                    <p>Achievement in everything you pursue</p>
-                </div>
-                <div class="wish-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="wish-emoji">❤️</div>
-                    <h4>Love & Happiness</h4>
-                    <p>Endless joy and meaningful connections</p>
-                </div>
-                <div class="wish-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="wish-emoji">🚀</div>
-                    <h4>New Adventures</h4>
-                    <p>Exciting opportunities and experiences</p>
-                </div>
-                <div class="wish-item" data-aos="fade-up" data-aos-delay="500">
-                    <div class="wish-emoji">🌺</div>
-                    <h4>Health & Wellness</h4>
-                    <p>Perfect health for body, mind, and soul</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Celebration -->
-    <section class="celebration-section">
-        <div class="container">
-            <div class="celebration-card glass-effect">
-                <h2>Ready to Celebrate? 🎉</h2>
-                <p>Click the button below to start the party!</p>
-                <button class="celebration-btn" onclick="startCelebration()">
-                    <span class="btn-text">Start Celebration</span>
-                    <span class="btn-icon">🎊</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-message">
-                    <h3>Made with Love 💖</h3>
-                    <p>Crafted specially for Nancy by Singh Anand</p>
-                </div>
-                <div class="footer-date">
-                    <p>November 20, 2024</p>
-                </div>
-                <div class="footer-quote">
-                    <p>"Friends by chance, siblings by choice"</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>Happy Birthday, Nancy! Here's to many more amazing years! 🎂✨</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Celebration Modal -->
-    <div class="modal" id="celebrationModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeCelebration()">&times;</button>
-            <div class="modal-body">
-                <div class="celebration-animation">
-                    <div class="celebration-emoji">🎉</div>
-                    <h2>Happy Birthday Nancy!</h2>
-                    <p>Hope your day is as wonderful as you are!</p>
-                    <div class="celebration-confetti" id="modalConfetti"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Confetti Container -->
+    <canvas id="confettiCanvas"></canvas>
 
     <script src="script.js"></script>
 </body>
