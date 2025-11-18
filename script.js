@@ -1,272 +1,202 @@
-// Confetti Animation
-function createConfetti() {
-    const confettiContainer = document.getElementById('confetti');
-    const colors = ['#ff6b9d', '#ffd700', '#4ecdc4', '#45b7d1', '#f7b731', '#5f27cd', '#ff69b4'];
+// Particles Background
+function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 50;
     
-    // Clear existing confetti
-    confettiContainer.innerHTML = '';
-    
-    for (let i = 0; i < 100; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * 100 + '%';
-        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.animationDelay = Math.random() * 5 + 's';
-        confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
-        confettiContainer.appendChild(confetti);
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particlesContainer.appendChild(particle);
     }
 }
 
-// Music Toggle (You can add actual audio later)
-let musicPlaying = false;
-
-function toggleMusic() {
-    const button = document.getElementById('musicToggle');
-    musicPlaying = !musicPlaying;
-    
-    if (musicPlaying) {
-        button.classList.add('playing');
-        button.innerHTML = '<i class="fas fa-pause"></i>';
-        // Add your music play code here
-        // const audio = new Audio('birthday-song.mp3');
-        // audio.play();
-    } else {
-        button.classList.remove('playing');
-        button.innerHTML = '<i class="fas fa-music"></i>';
-        // Pause music here
-    }
+// Theme Toggle
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
 }
 
-// Cake Candle Blow
-document.addEventListener('DOMContentLoaded', function() {
-    const cake = document.querySelector('.cake');
-    if (cake) {
-        cake.addEventListener('click', function() {
-            const flames = document.querySelectorAll('.flame');
-            flames.forEach(flame => {
-                flame.style.opacity = '0';
-                flame.style.transform = 'translateX(-50%) scale(0)';
-            });
-            
-            // Show celebration message
-            setTimeout(() => {
-                showCelebrationMessage();
-                createConfetti();
-                
-                // Relight candles after 3 seconds
-                setTimeout(() => {
-                    flames.forEach(flame => {
-                        flame.style.opacity = '1';
-                        flame.style.transform = 'translateX(-50%) scale(1)';
-                        flame.style.transition = 'all 0.5s ease';
-                    });
-                }, 3000);
-            }, 500);
-        });
+// Load saved theme
+window.addEventListener('load', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
     }
+    createParticles();
+    initAOS();
 });
 
-// Gift Box Function
-function openGift() {
-    const giftBox = document.querySelector('.gift-box');
-    const giftContent = document.getElementById('giftContent');
-    
-    giftBox.classList.add('open');
-    setTimeout(() => {
-        giftContent.classList.add('show');
-    }, 500);
-}
-
-function closeGift() {
-    const giftBox = document.querySelector('.gift-box');
-    const giftContent = document.getElementById('giftContent');
-    
-    giftContent.classList.remove('show');
-    giftBox.classList.remove('open');
-}
-
-// Fun Facts Reveal
-function revealFact(card) {
-    card.classList.toggle('flipped');
-}
-
-// Celebration Button Function
-function celebrate() {
-    createConfetti();
-    
-    // Animate button
-    const button = document.querySelector('.celebration-btn');
-    button.style.animation = 'none';
-    setTimeout(() => {
-        button.style.animation = 'buttonGlow 3s infinite';
-    }, 10);
-    
-    // Show messages in sequence
-    setTimeout(() => {
-        showCelebrationMessage();
-    }, 500);
-    
-    setTimeout(() => {
-        showCelebrationMessage();
-    }, 4000);
-    
-    setTimeout(() => {
-        showCelebrationMessage();
-    }, 7500);
-}
-
-// Celebration Message
-function showCelebrationMessage() {
-    const messages = [
-        "🎉 Happy Birthday Nancy! You're the best sister ever! 🎉",
-        "✨ From chocolates to forever memories! ✨",
-        "🎊 May all your dreams come true this year! 🎊",
-        "💖 So grateful for our friendship turned siblinghood! 💖",
-        "🌟 Shine bright today and always, Nancy! 🌟",
-        "🎂 Best wishes from your brother Anand! 🎂",
-        "🎈 You deserve all the happiness in the world! 🎈",
-        "🍫 Here's to more chocolate exchanges! 🍫",
-        "😊 Thank you for being the amazing person you are! 😊",
-        "🎁 Wishing you a year full of surprises and joy! 🎁"
-    ];
-    
-    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-    
-    // Create custom alert
-    const alertDiv = document.createElement('div');
-    alertDiv.style.cssText = `
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 30px 50px;
-        border-radius: 20px;
-        font-size: 1.5rem;
-        font-weight: 600;
-        z-index: 10000;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        text-align: center;
-        animation: zoomIn 0.5s ease-out;
-        max-width: 90%;
-        border: 3px solid #ffd700;
-    `;
-    alertDiv.textContent = randomMessage;
-    document.body.appendChild(alertDiv);
-    
-    setTimeout(() => {
-        alertDiv.style.animation = 'fadeOut 0.5s ease-out';
-        setTimeout(() => {
-            if (document.body.contains(alertDiv)) {
-                document.body.removeChild(alertDiv);
-            }
-        }, 500);
-    }, 3000);
-}
-
-// Share Functions
-function shareWebsite(platform) {
-    const url = window.location.href;
-    const text = "🎉 Check out this amazing birthday celebration for Nancy! 🎂";
-    
-    let shareUrl;
-    
-    switch(platform) {
-        case 'whatsapp':
-            shareUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
-            break;
-        case 'facebook':
-            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-            break;
-        case 'twitter':
-            shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-            break;
-    }
-    
-    window.open(shareUrl, '_blank');
-}
-
-// Initialize on page load
-window.addEventListener('load', () => {
-    createConfetti();
-    
-    // Add interactive effects to memory cards
-    const memoryCards = document.querySelectorAll('.memory-card, .gallery-item');
-    memoryCards.forEach(card => {
-        card.addEventListener('click', function() {
-            this.style.animation = 'bounce 0.5s ease';
-            setTimeout(() => {
-                this.style.animation = '';
-            }, 500);
-        });
-    });
-    
-    // Animate wish cards on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
+// Simple AOS (Animate On Scroll) Implementation
+function initAOS() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, observerOptions);
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    });
     
-    document.querySelectorAll('.wish-card, .timeline-item, .gallery-item').forEach(el => {
+    document.querySelectorAll('[data-aos]').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(50px)';
+        el.style.transition = 'all 0.6s ease-out';
         observer.observe(el);
     });
+}
+
+// Celebration Modal
+function openCelebration() {
+    const modal = document.getElementById('celebrationModal');
+    modal.classList.add('show');
+    createModalConfetti();
+    playCelebrationSound();
+}
+
+function closeCelebration() {
+    const modal = document.getElementById('celebrationModal');
+    modal.classList.remove('show');
+}
+
+// Start Celebration
+function startCelebration() {
+    openCelebration();
+    createFloatingEmojis();
+}
+
+// Modal Confetti
+function createModalConfetti() {
+    const container = document.getElementById('modalConfetti');
+    container.innerHTML = '';
+    
+    const colors = ['#FF6B9D', '#C06C84', '#4ECDC4', '#FFD700', '#FFA07A'];
+    
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'absolute';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.top = '-10px';
+        confetti.style.opacity = Math.random();
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear forwards`;
+        container.appendChild(confetti);
+    }
+}
+
+// Floating Emojis
+function createFloatingEmojis() {
+    const emojis = ['🎉', '🎊', '🎈', '🎁', '✨', '💝', '🍫', '🎂'];
+    
+    for (let i = 0; i < 20; i++) {
+        const emoji = document.createElement('div');
+        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.position = 'fixed';
+        emoji.style.left = Math.random() * 100 + 'vw';
+        emoji.style.top = '100vh';
+        emoji.style.fontSize = (Math.random() * 30 + 20) + 'px';
+        emoji.style.zIndex = '9999';
+        emoji.style.pointerEvents = 'none';
+        emoji.style.animation = `floatUp ${Math.random() * 2 + 3}s ease-out forwards`;
+        document.body.appendChild(emoji);
+        
+        setTimeout(() => {
+            emoji.remove();
+        }, 5000);
+    }
+}
+
+// Celebration Sound (Visual feedback if no audio)
+function playCelebrationSound() {
+    // You can add actual audio here
+    // const audio = new Audio('celebration.mp3');
+    // audio.play();
+    
+    // Visual feedback
+    document.body.style.animation = 'flash 0.5s';
+    setTimeout(() => {
+        document.body.style.animation = '';
+    }, 500);
+}
+
+// Smooth scroll for navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 100) {
+        navbar.style.padding = '10px 0';
+        navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+    } else {
+        navbar.style.padding = '15px 0';
+        navbar.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
+    }
 });
 
 // Add CSS animations dynamically
 const style = document.createElement('style');
 style.textContent = `
-    @keyframes fadeOut {
-        from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        to { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    @keyframes confettiFall {
+        to {
+            top: 100%;
+            transform: translateY(0) rotate(720deg);
+        }
     }
     
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
+    @keyframes floatUp {
+        to {
+            top: -100px;
+            opacity: 0;
+            transform: translateX(${Math.random() * 200 - 100}px);
+        }
+    }
+    
+    @keyframes flash {
+        0%, 100% { filter: brightness(1); }
+        50% { filter: brightness(1.2); }
     }
 `;
 document.head.appendChild(style);
 
-// Add particle effect on mouse move (optional - looks cool!)
-document.addEventListener('mousemove', (e) => {
-    if (Math.random() > 0.95) {
-        const particle = document.createElement('div');
-        particle.style.cssText = `
-            position: fixed;
-            width: 5px;
-            height: 5px;
-            background: #ffd700;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            left: ${e.clientX}px;
-            top: ${e.clientY}px;
-            animation: particleFade 1s ease-out forwards;
-        `;
-        document.body.appendChild(particle);
-        
-        setTimeout(() => {
-            document.body.removeChild(particle);
-        }, 1000);
+// Close modal on outside click
+window.addEventListener('click', (e) => {
+    const modal = document.getElementById('celebrationModal');
+    if (e.target === modal) {
+        closeCelebration();
     }
 });
 
-const particleStyle = document.createElement('style');
-particleStyle.textContent = `
-    @keyframes particleFade {
-        to {
-            transform: translateY(-50px);
-            opacity: 0;
-        }
+// Cake interaction
+document.addEventListener('DOMContentLoaded', () => {
+    const cake = document.querySelector('.cake-3d');
+    if (cake) {
+        cake.addEventListener('click', () => {
+            cake.style.animation = 'none';
+            setTimeout(() => {
+                cake.style.animation = 'cakeRotate 10s linear infinite, bounce 1s ease';
+            }, 10);
+            createFloatingEmojis();
+        });
     }
-`;
-document.head.appendChild(particleStyle);
+});
