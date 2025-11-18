@@ -39,11 +39,13 @@ function celebrate() {
 // Celebration Message
 function showCelebrationMessage() {
     const messages = [
-        "🎉 Yay! Another year of awesomeness! 🎉",
-        "✨ You deserve all the happiness in the world! ✨",
-        "🎊 Here's to the best sister ever! 🎊",
-        "💖 Wishing you endless joy and love! 💖",
-        "🌟 Shine bright, birthday star! 🌟"
+        "🎉 Happy Birthday Nancy! You're the best sister! 🎉",
+        "✨ Here's to many more years of friendship & siblinghood! ✨",
+        "🎊 May your day be as wonderful as you are! 🎊",
+        "💖 From school friends to forever siblings! 💖",
+        "🌟 Shine bright today and always, Nancy! 🌟",
+        "🎂 Best wishes from your brother Anand! 🎂",
+        "🎈 You deserve all the happiness in the world! 🎈"
     ];
     
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
@@ -65,6 +67,7 @@ function showCelebrationMessage() {
         box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         text-align: center;
         animation: zoomIn 0.5s ease-out;
+        max-width: 90%;
     `;
     alertDiv.textContent = randomMessage;
     document.body.appendChild(alertDiv);
@@ -90,6 +93,12 @@ window.addEventListener('load', () => {
                 card.style.animation = '';
             }, 500);
         });
+    });
+    
+    // Add floating animation to wish cards
+    const wishCards = document.querySelectorAll('.wish-card');
+    wishCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
     });
 });
 
